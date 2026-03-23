@@ -1,7 +1,13 @@
 {
   "name": "timedatamodel",
   "description": "Guides creation and manipulation of TimeDataModel objects (TimeSeries, TimeSeriesTable) with rich metadata for energy, forecasting, and time series data pipelines.",
+  "version": "1.0.0",
   "author": {
-    "name": "Davide"
-  }
+    "name": "Davide Ferraro",
+    "email": "davide@rebase.energy"
+  },
+  "homepage": "https://github.com/rebase-energy/TimeDataModel-skill",
+  "repository": "https://github.com/rebase-energy/TimeDataModel-skill",
+  "license": "MIT",
+  "keywords": ["time-series", "timeseries", "energy", "forecasting", "timedatamodel", "data-modeling", "bi-temporal"]
 }
