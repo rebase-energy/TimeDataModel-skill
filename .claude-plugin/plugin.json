@@ -1,0 +1,7 @@
+{
+  "name": "timedatamodel",
+  "description": "Guides creation and manipulation of TimeDataModel objects (TimeSeries, TimeSeriesTable) with rich metadata for energy, forecasting, and time series data pipelines.",
+  "author": {
+    "name": "Davide"
+  }
+}
