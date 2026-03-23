@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TimeDataModel — Claude Code Plugin</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.7;
+    }
+
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      border-bottom: 1px solid #21262d;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #1f6feb;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #f0f6fc;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #8b949e;
+      max-width: 560px;
+      margin: 0 auto 28px;
+    }
+
+    .install-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.95rem;
+      color: #79c0ff;
+    }
+
+    .install-box span { color: #8b949e; font-size: 0.8rem; font-family: inherit; }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    section { margin-bottom: 56px; }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #f0f6fc;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #21262d;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #f0f6fc;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 0.875rem;
+      color: #8b949e;
+    }
+
+    .card .icon {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+      overflow-x: auto;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: #e6edf3;
+    }
+
+    .comment { color: #8b949e; }
+    .kw { color: #ff7b72; }
+    .fn { color: #d2a8ff; }
+    .str { color: #a5d6ff; }
+    .cls { color: #ffa657; }
+
+    .steps { list-style: none; counter-reset: steps; }
+    .steps li {
+      counter-increment: steps;
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .steps li::before {
+      content: counter(steps);
+      background: #1f6feb;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .steps li p { color: #8b949e; font-size: 0.9rem; margin-top: 4px; }
+    .steps li strong { color: #e6edf3; }
+
+    code {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.85em;
+      color: #79c0ff;
+    }
+
+    footer {
+      border-top: 1px solid #21262d;
+      text-align: center;
+      padding: 32px 24px;
+      color: #8b949e;
+      font-size: 0.875rem;
+    }
+
+    footer a { color: #58a6ff; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Claude Code Plugin</div>
+  <h1>TimeDataModel</h1>
+  <p>Make Claude an expert in time series data modeling for energy and forecasting pipelines — automatically.</p>
+  <div class="install-box">
+    <span>/plugin install</span> timedatamodel
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🧠</div>
+        <h3>Automatic activation</h3>
+        <p>Claude applies this skill silently whenever you work with <code>TimeSeries</code> or <code>TimeSeriesTable</code> objects. No commands needed.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⏱</div>
+        <h3>Bi-temporal modeling</h3>
+        <p>Knows when to use SIMPLE, VERSIONED, CORRECTED, or AUDIT shapes — and how to structure forecasts with <code>knowledge_time</code>.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h3>Energy & forecasting</h3>
+        <p>Built for energy systems: power, wind, solar, load — with correct units, frequencies, and DataType hierarchy.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔁</div>
+        <h3>Full workflow coverage</h3>
+        <p>Import/export, slicing, unit conversion, geospatial filtering, validation — with the right pandas, Polars, and PyArrow patterns.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Installation</h2>
+    <ol class="steps">
+      <li>
+        <div>
+          <strong>Find it in Claude Code</strong>
+          <p>Type <code>/find-skills timedatamodel</code> in any Claude Code session.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Install</strong>
+          <p>Run <code>/plugin install timedatamodel</code> — done. No configuration required.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Just describe what you need</strong>
+          <p>Claude will produce correct, idiomatic TimeDataModel code automatically.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Example</h2>
+    <p style="color:#8b949e; margin-bottom:16px;">Ask Claude in plain English — it handles the rest:</p>
+    <pre><span class="comment"># You say: "Create a versioned TimeSeries of hourly wind power forecasts"
+# Claude generates:</span>
+
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">from</span> timedatamodel <span class="kw">import</span> <span class="cls">TimeSeries</span>, <span class="cls">Frequency</span>, <span class="cls">DataType</span>
+
+df = pd.<span class="fn">DataFrame</span>({
+    <span class="str">"knowledge_time"</span>: pd.<span class="fn">date_range</span>(<span class="str">"2024-01-01"</span>, periods=24, freq=<span class="str">"h"</span>, tz=<span class="str">"UTC"</span>),
+    <span class="str">"valid_time"</span>:     pd.<span class="fn">date_range</span>(<span class="str">"2024-01-02"</span>, periods=24, freq=<span class="str">"h"</span>, tz=<span class="str">"UTC"</span>),
+    <span class="str">"value"</span>:          wind_power_values,
+})
+
+ts = <span class="cls">TimeSeries</span>.<span class="fn">from_pandas</span>(
+    df,
+    frequency=<span class="cls">Frequency</span>.PT1H,
+    name=<span class="str">"wind_forecast"</span>,
+    unit=<span class="str">"MW"</span>,
+    data_type=<span class="cls">DataType</span>.FORECAST,
+)
+<span class="comment"># ts.shape → DataShape.VERSIONED  (inferred automatically)</span></pre>
+  </section>
+
+  <section>
+    <h2>About TimeDataModel</h2>
+    <p style="color:#8b949e;">
+      <a href="https://github.com/rebase-energy/TimeDataModel">TimeDataModel</a> is an open-source Python library by <a href="https://rebase.energy">Rebase Energy</a> for self-describing, bi-temporal time series data. Backed by Polars, designed for energy systems, forecasting, and any domain where data provenance matters.
+    </p>
+    <br>
+    <pre>pip install timedatamodel</pre>
+  </section>
+
+</main>
+
+<footer>
+  Built by <a href="https://rebase.energy">Rebase Energy</a> &nbsp;·&nbsp;
+  <a href="https://github.com/rebase-energy/TimeDataModel-skill">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://github.com/rebase-energy/TimeDataModel">TimeDataModel Library</a>
+</footer>
+
+</body>
+</html>
